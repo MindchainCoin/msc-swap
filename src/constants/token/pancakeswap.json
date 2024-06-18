@@ -7,8 +7,6 @@
       "patch": 1
     },
     "tags": {},
-    "logoURI": "/images/coins/wbnb.png",
-    "keywords": ["pancake", "default"],
     "tokens": [
       {
         "name": "Wrapped MIND",
@@ -16,15 +14,7 @@
         "address": "0x94E6F64f9a00bE3a7B353f55b303DC5eb0C9C396",
         "chainId": 9996,
         "decimals": 18,
-        "logoURI": "https://tokens-data.1inch.io/images/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.png"
-      },
-      {
-        "name": "Wrapped MIND",
-        "symbol": "WMIND",
-        "address": "",
-        "chainId": 9996,
-        "decimals": 18,
-        "logoURI": "https://tokens-data.1inch.io/images/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2.png"
+        "logoURI": "/images/coins/wbnb.png"
       }
         
     ]

@@ -36,7 +36,6 @@ const BodyWrapper = styled.div`
   overflow-x: hidden;
   z-index: 1;
   justify-content: center;
-  // background-image: url('/images/group-pancake.svg');
   background-repeat: no-repeat;
   background-position: bottom 24px center;
   background-size: 90%;
@@ -46,18 +45,62 @@ const BodyWrapper = styled.div`
   }
 
   ${({ theme }) => theme.mediaQueries.lg} {
-     //background-image: url('/images/arch-${({ theme }) => (theme.isDark ? 'dark' : 'light')}.svg'),
-     url('/images/ast.png'), url('/images/ast.png');
-    background-repeat: no-repeat;
-    background-position: center 420px, 10% 230px, 90% 230px;
-    background-size: contain, 266px, 266px;
+    background-image: url(); // Remove the duplicate images
     min-height: 90vh;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      width: 266px;
+      height: 266px;
+      background-image: url('/images/ast.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: float 6s ease-in-out infinite;
+      transition: transform 0.001s ease-in-out;
+    }
+
+    &::before {
+      left: 10%;
+      top: 230px;
+    }
+
+    &::after {
+      right: 10%;
+      top: 230px;
+    }
+
+    &::before:hover, &::after:hover {
+      animation: flip 0.1s forwards;
+    }
   }
-`
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes flip {
+    0% {
+      transform: perspective(800px) rotateY(0deg);
+    }
+    100% {
+      transform: perspective(800px) rotateY(180deg);
+    }
+  }
+`;
 
 const Marginer = styled.div`
   margin-top: 5rem;
 `
+
 
 export default function App() {
   const [selectedLanguage, setSelectedLanguage] = useState<any>(undefined)
@@ -80,7 +123,7 @@ export default function App() {
   }
 
   useEffect(() => {
-    const storedLangCode = localStorage.getItem('pancakeSwapLanguage')
+    const storedLangCode = localStorage.getItem('mscswap')
     if (storedLangCode) {
       const storedLang = getStoredLang(storedLangCode)
       setSelectedLanguage(storedLang)
