@@ -1,5 +1,5 @@
 {
-    "name": "pancakeswap",
+    "name": "MSC",
     "timestamp": "2020-08-25T15:41:29.665Z",
     "version": {
       "major": 1,
@@ -14,7 +14,37 @@
         "address": "0x94E6F64f9a00bE3a7B353f55b303DC5eb0C9C396",
         "chainId": 9996,
         "decimals": 18,
-        "logoURI": "/images/coins/wbnb.png"
+      "logoURI": "/images/WMIND.png"
+      },
+      {
+        "name": "Perry MIND",
+        "symbol": "PMIND",
+        "address": "0x75E218790B76654A5EdA1D0797B46cBC709136b0",
+        "chainId": 9996,
+        "decimals": 18,
+        "logoURI": "/images/PMIND.png"
+      },
+      {
+        "name": "Tether USD",
+        "symbol": "USDT",
+        "address": "0x32a8a2052b48Da5FD253cC8B386B88B3E0BF50eE",
+        "chainId": 9996,
+        "decimals": 18
+      },
+      {
+        "name": "Mind Usd",
+        "symbol": "MUSD",
+        "address": "0xaC264f337b2780b9fd277cd9C9B2149B43F87904",
+        "chainId": 9996,
+        "decimals": 18,
+        "logoURI": "/images/MUSD.png"
+      },
+      {
+        "name": "MDAI Stablecoin",
+        "symbol": "MDAI",
+        "address": "0x979e75d92B93C6BFaF344d8800c160b947A9081E",
+        "chainId": 9996,
+        "decimals": 18
       }
         
     ]
