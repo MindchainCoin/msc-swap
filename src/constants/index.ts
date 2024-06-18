@@ -7,23 +7,23 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
-export const DAI = new Token(ChainId.MAINNET, '0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3', 18, 'DAI', 'Dai Stablecoin')
-export const BUSD = new Token(ChainId.MAINNET, '0xe9e7cea3dedca5984780bafc599bd69add087d56', 18, 'BUSD', 'Binance USD')
-export const USDT = new Token(ChainId.MAINNET, '0x55d398326f99059ff775485246999027b3197955', 18, 'USDT', 'Tether USD')
-export const UST = new Token(
-  ChainId.MAINNET,
-  '0x23396cf899ca06c4472205fc903bdb4de249d6fc',
-  18,
-  'UST',
-  'Wrapped UST Token'
-)
-export const ETH = new Token(
-  ChainId.MAINNET,
-  '0x2170ed0880ac9a755fd29b2688956bd959f933f8',
-  18,
-  'ETH',
-  'Binance-Peg Ethereum Token'
-)
+export const MDAI = new Token(ChainId.MAINNET, '0x979e75d92B93C6BFaF344d8800c160b947A9081E', 18, 'MDAI', 'MDAI Stablecoin')
+export const MUSD = new Token(ChainId.MAINNET, '0xaC264f337b2780b9fd277cd9C9B2149B43F87904', 18, 'MUSD', 'MINDCHAIN USD')
+export const USDT = new Token(ChainId.MAINNET, '0x32a8a2052b48Da5FD253cC8B386B88B3E0BF50eE', 18, 'USDT', 'Tether USD')
+// export const UST = new Token(
+//   ChainId.MAINNET,
+//   '0x23396cf899ca06c4472205fc903bdb4de249d6fc',
+//   18,
+//   'UST',
+//   'Wrapped UST Token'
+// )
+// export const ETH = new Token(
+//   ChainId.MAINNET,
+//   '0x2170ed0880ac9a755fd29b2688956bd959f933f8',
+//   18,
+//   'ETH',
+//   'Binance-Peg Ethereum Token'
+// )
 
 const WETH_ONLY: ChainTokenList = {
   [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],
@@ -33,7 +33,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, BUSD, USDT, UST, ETH],
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], MDAI, MUSD, USDT],
 }
 
 /**
@@ -47,23 +47,23 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, BUSD, USDT],
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], MDAI, MUSD, USDT],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], DAI, BUSD, USDT],
+  [ChainId.MAINNET]: [...WETH_ONLY[ChainId.MAINNET], MDAI, MUSD, USDT],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
   [ChainId.MAINNET]: [
     [
       new Token(ChainId.MAINNET, '0x75E218790B76654A5EdA1D0797B46cBC709136b0', 18, 'PMIND', 'Perry MIND'),
-      new Token(ChainId.MAINNET, '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', 18, 'WBNB', 'Wrapped BNB'),
+      new Token(ChainId.MAINNET, '0x979e75d92B93C6BFaF344d8800c160b947A9081E', 18, 'MDAI', 'MDAI'),
     ],
-    [BUSD, USDT],
-    [DAI, USDT],
+    [MUSD, USDT],
+    [MDAI, USDT],
   ],
 }
 
