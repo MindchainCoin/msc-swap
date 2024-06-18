@@ -32,7 +32,8 @@ export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: b
 
 export function useWETHContract(withSignerIfPossible?: boolean): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId ? WETH[chainId].address : undefined, WETH_ABI, withSignerIfPossible)
+  const address = chainId ? WETH[chainId]?.address : undefined
+  return useContract(address, WETH_ABI, withSignerIfPossible)
 }
 
 export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contract | null {
@@ -42,6 +43,11 @@ export function useENSRegistrarContract(withSignerIfPossible?: boolean): Contrac
     switch (chainId) {
       case ChainId.MAINNET:
       case ChainId.TESTNET:
+        // Set the appropriate address for the ENS registrar
+        address = '0x94E6F64f9a00bE3a7B353f55b303DC5eb0C9C396'; // Replace with actual ENS registrar address
+        break;
+      default:
+        address = undefined;
     }
   }
   return useContract(address, ENS_ABI, withSignerIfPossible)
@@ -61,5 +67,6 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 
 export function useMulticallContract(): Contract | null {
   const { chainId } = useActiveWeb3React()
-  return useContract(chainId && MULTICALL_NETWORKS[chainId], MULTICALL_ABI, false)
+  const address = chainId ? MULTICALL_NETWORKS[chainId] : undefined
+  return useContract(address, MULTICALL_ABI, false)
 }

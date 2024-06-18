@@ -1,7 +1,6 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import  React,{ Suspense} from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
-import { Credentials, StringTranslations } from '@crowdin/crowdin-api-client'
 import Popups from '../components/Popups'
 import Web3ReactManager from '../components/Web3ReactManager'
 import { RedirectDuplicateTokenIds, RedirectOldAddLiquidityPathStructure } from './AddLiquidity/redirects'
@@ -12,10 +11,6 @@ import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
 import Swap from './Swap'
 import { RedirectPathToSwapOnly } from './Swap/redirects'
-import { EN, allLanguages } from '../constants/localisation/languageCodes'
-import { LanguageContext } from '../hooks/LanguageContext'
-import { TranslationsContext } from '../hooks/TranslationsContext'
-
 import Menu from '../components/Menu'
 
 const AppWrapper = styled.div`
@@ -45,149 +40,41 @@ const BodyWrapper = styled.div`
   }
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    background-image: url(); // Remove the duplicate images
+    background-repeat: no-repeat;
+    background-position: center 420px, 10% 230px, 90% 230px;
+    background-size: contain, 266px, 266px;
     min-height: 90vh;
-
-    &::before, &::after {
-      content: '';
-      position: absolute;
-      width: 266px;
-      height: 266px;
-      background-image: url('/images/ast.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      animation: float 6s ease-in-out infinite;
-      transition: transform 0.001s ease-in-out;
-    }
-
-    &::before {
-      left: 10%;
-      top: 230px;
-    }
-
-    &::after {
-      right: 10%;
-      top: 230px;
-    }
-
-    &::before:hover, &::after:hover {
-      animation: flip 0.1s forwards;
-    }
   }
-
-  @keyframes float {
-    0% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
-  }
-
-  @keyframes flip {
-    0% {
-      transform: perspective(800px) rotateY(0deg);
-    }
-    100% {
-      transform: perspective(800px) rotateY(180deg);
-    }
-  }
-`;
+`
 
 const Marginer = styled.div`
   margin-top: 5rem;
 `
 
-
 export default function App() {
-  const [selectedLanguage, setSelectedLanguage] = useState<any>(undefined)
-  const [translatedLanguage, setTranslatedLanguage] = useState<any>(undefined)
-  const [translations, setTranslations] = useState<Array<any>>([])
-  const apiKey = `${process.env.REACT_APP_CROWDIN_APIKEY}`
-  const projectId = parseInt(`${process.env.REACT_APP_CROWDIN_PROJECTID}`)
-  const fileId = 6
-
-  const credentials: Credentials = {
-    token: apiKey,
-  }
-
-  const stringTranslationsApi = new StringTranslations(credentials)
-
-  const getStoredLang = (storedLangCode: string) => {
-    return allLanguages.filter((language) => {
-      return language.code === storedLangCode
-    })[0]
-  }
-
-  useEffect(() => {
-    const storedLangCode = localStorage.getItem('mscswap')
-    if (storedLangCode) {
-      const storedLang = getStoredLang(storedLangCode)
-      setSelectedLanguage(storedLang)
-    } else {
-      setSelectedLanguage(EN)
-    }
-  }, [])
-
-  const fetchTranslationsForSelectedLanguage = async () => {
-    stringTranslationsApi
-      .listLanguageTranslations(projectId, selectedLanguage.code, undefined, fileId, 200)
-      .then((translationApiResponse) => {
-        if (translationApiResponse.data.length < 1) {
-          setTranslations(['error'])
-        } else {
-          setTranslations(translationApiResponse.data)
-        }
-      })
-      .then(() => setTranslatedLanguage(selectedLanguage))
-      .catch((error) => {
-        setTranslations(['error'])
-        console.error(error)
-      })
-  }
-
-  useEffect(() => {
-    if (selectedLanguage) {
-      fetchTranslationsForSelectedLanguage()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedLanguage])
-
   return (
     <Suspense fallback={null}>
       <HashRouter>
         <AppWrapper>
-          <LanguageContext.Provider
-            value={{ selectedLanguage, setSelectedLanguage, translatedLanguage, setTranslatedLanguage }}
-          >
-            <TranslationsContext.Provider value={{ translations, setTranslations }}>
-              <Menu>
-                <BodyWrapper>
-                  <Popups />
-                  <Web3ReactManager>
-                    <Switch>
-                      <Route exact strict path="/swap" component={Swap} />
-                      <Route exact strict path="/find" component={PoolFinder} />
-                      <Route exact strict path="/pool" component={Pool} />
-                      <Route exact path="/add" component={AddLiquidity} />
-                      <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
-
-                      {/* Redirection: These old routes are still used in the code base */}
-                      <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
-                      <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
-                      <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
-
-                      <Route component={RedirectPathToSwapOnly} />
-                    </Switch>
-                  </Web3ReactManager>
-                  <Marginer />
-                </BodyWrapper>
-              </Menu>
-            </TranslationsContext.Provider>
-          </LanguageContext.Provider>
+          <Menu>
+            <BodyWrapper>
+              <Popups />
+              <Web3ReactManager>
+                <Switch>
+                  <Route exact path="/swap" component={Swap} />
+                  <Route exact path="/find" component={PoolFinder} />
+                  <Route exact path="/pool" component={Pool} />
+                  <Route exact path="/add" component={AddLiquidity} />
+                  <Route exact path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
+                  <Route exact path="/add/:currencyIdA" component={RedirectOldAddLiquidityPathStructure} />
+                  <Route exact path="/add/:currencyIdA/:currencyIdB" component={RedirectDuplicateTokenIds} />
+                  <Route exact path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
+                  <Route component={RedirectPathToSwapOnly} />
+                </Switch>
+              </Web3ReactManager>
+              <Marginer />
+            </BodyWrapper>
+          </Menu>
         </AppWrapper>
       </HashRouter>
     </Suspense>

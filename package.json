@@ -45,7 +45,7 @@
     "js-cookie": "^2.2.1",
     "lodash.flatmap": "^4.5.0",
     "mindswap-sdk": "^1.0.1",
-    "msc-uikit": "^0.1.3",
+    "msc-uikit": "^0.1.4",
     "multicodec": "^2.0.0",
     "multihashes": "^3.0.1",
     "polished": "^3.3.2",
@@ -87,8 +87,8 @@
     "node": "16.20.2"
   },
   "scripts": {
-    "start": "react-scripts start",
     "1": "react-scripts build && echo '/* /index.html  200' | cat >build/_redirects ",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
