@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Flex, Input, Text } from '@pancakeswap-libs/uikit'
+import { Button, Flex, Input, Text } from 'msc-uikit'
 import { useUserSlippageTolerance } from 'state/user/hooks'
 import useI18n from 'hooks/useI18n'
 import QuestionHelper from '../QuestionHelper'

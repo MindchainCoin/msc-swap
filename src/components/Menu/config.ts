@@ -1,4 +1,5 @@
-import { MenuEntry } from '@pancakeswap-libs/uikit'
+// import { MenuEntry } from 'msc-uikit'
+import { MenuEntry } from "msc-uikit"
 
 const config: MenuEntry[] = [
   {
