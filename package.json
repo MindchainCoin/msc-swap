@@ -1,6 +1,6 @@
 {
-  "name": "@pancakeswap/interface",
-  "description": "Pancakeswap Interface",
+  "name": "@mscswap/interface",
+  "description": "Msc-swap Interface",
   "homepage": ".",
   "private": true,
   "dependencies": {
