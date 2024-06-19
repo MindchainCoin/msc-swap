@@ -45,7 +45,7 @@
     "js-cookie": "^2.2.1",
     "lodash.flatmap": "^4.5.0",
     "mindswap-sdk": "^1.0.1",
-    "msc-uikit": "^0.1.6",
+    "msc-uikit": "^0.1.10",
     "multicodec": "^2.0.0",
     "multihashes": "^3.0.1",
     "polished": "^3.3.2",

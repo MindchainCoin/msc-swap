@@ -10724,10 +10724,10 @@
   "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.1.tgz"
   "version" "2.1.1"
 
-"msc-uikit@^0.1.6":
-  "integrity" "sha512-mm4cXehk9VJ3wGeUDtzoXseT6S2uc7H43qfcvI7Ge3PMOOwa8+m5yFEodIVoBwq/qYAB4z7KA/5WBEo8EQSlrw=="
-  "resolved" "https://registry.npmjs.org/msc-uikit/-/msc-uikit-0.1.6.tgz"
-  "version" "0.1.6"
+"msc-uikit@^0.1.10":
+  "integrity" "sha512-nNhCEGbhs+Kogloi1J5Cp96uBuKc/sp3VrmkiBpItEL6AYLZRTnx14wv26dRdDJ5hndZlXpZJg+YuCC7JbEAdA=="
+  "resolved" "https://registry.npmjs.org/msc-uikit/-/msc-uikit-0.1.10.tgz"
+  "version" "0.1.10"
   dependencies:
     "@types/lodash" "^4.14.162"
     "@types/styled-system" "^5.1.10"
