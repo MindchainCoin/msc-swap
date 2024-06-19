@@ -7,7 +7,7 @@ import Logo from '../Logo'
 import CoinLogo from '../pancake/CoinLogo'
 
 const getTokenLogoURL = (address: string) =>
-  `https://raw.githubusercontent.com/Mind-chain/Mscswap-chainlist/main/${address}.png`
+  `https://raw.githubusercontent.com/Mind-chain/Mscswap-tokenlist/main/${address}.png`
 
 const StyledBnbLogo = styled.img<{ size: string }>`
   width: ${({ size }) => size};
