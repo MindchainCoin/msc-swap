@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import { BigNumber } from '@ethersproject/bignumber'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, currencyEquals, ETHER, TokenAmount, WETH } from 'mindswap-sdk'
+import { Currency, currencyEquals, ETHER, TokenAmount, WMIND } from 'mindswap-sdk'
 import { Button, CardBody, AddIcon, Text as UIKitText } from 'msc-uikit'
 import { RouteComponentProps } from 'react-router-dom'
 import { LightCard } from 'components/Card'
@@ -49,8 +49,8 @@ export default function AddLiquidity({
 
   const oneCurrencyIsWETH = Boolean(
     chainId &&
-      ((currencyA && currencyEquals(currencyA, WETH[chainId])) ||
-        (currencyB && currencyEquals(currencyB, WETH[chainId])))
+      ((currencyA && currencyEquals(currencyA, WMIND[chainId])) ||
+        (currencyB && currencyEquals(currencyB, WMIND[chainId])))
   )
   const expertMode = useIsExpertMode()
 

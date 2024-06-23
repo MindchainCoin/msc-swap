@@ -10554,10 +10554,10 @@
   "resolved" "https://registry.npmjs.org/min-indent/-/min-indent-1.0.1.tgz"
   "version" "1.0.1"
 
-"mindswap-sdk@^1.0.1":
-  "integrity" "sha512-QKj1RHrrCNPwLQoaq5h/R1nmJyMwk3ghNYPwpD2SFUhxQV/WOY48cbVeBmLUhml7qSgZovXWapdZfjOXPgU+Hg=="
-  "resolved" "https://registry.npmjs.org/mindswap-sdk/-/mindswap-sdk-1.0.1.tgz"
-  "version" "1.0.1"
+"mindswap-sdk@^1.0.2":
+  "integrity" "sha512-+KetUwQyAmlEQaz5GborrB8t/oJCHbS1+qNsGwDlszwMXl46M8sPy9F/KW19gRiCLqmUb4SDQxo+z/0H6kdg1A=="
+  "resolved" "https://registry.npmjs.org/mindswap-sdk/-/mindswap-sdk-1.0.2.tgz"
+  "version" "1.0.2"
   dependencies:
     "big.js" "^5.2.2"
     "decimal.js-light" "^2.5.0"

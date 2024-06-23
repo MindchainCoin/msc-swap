@@ -1,10 +1,12 @@
-import { ChainId, JSBI, Percent, Token, WETH } from 'mindswap-sdk'
+import { ChainId, JSBI, Percent, Token,WMIND } from 'mindswap-sdk'
 
 export const ROUTER_ADDRESS = '0xd9178225F2AaA0aCe27B73429f9248e7E2c3b843'
 
 // a list of tokens by chain
 type ChainTokenList = {
-  readonly [chainId in ChainId]: Token[]
+  readonly [chainId in ChainId]: Token[
+    
+  ]
 }
 
 export const MDAI = new Token(ChainId.MAINNET, '0x979e75d92B93C6BFaF344d8800c160b947A9081E', 18, 'MDAI', 'MDAI Stablecoin')
@@ -27,8 +29,8 @@ export const PMIND = new Token(ChainId.MAINNET, '0x75E218790B76654A5EdA1D0797B46
 // )
 
 const WETH_ONLY: ChainTokenList = {
-  [ChainId.MAINNET]: [WETH[ChainId.MAINNET]],
-  [ChainId.TESTNET]: [WETH[ChainId.TESTNET]],
+  [ChainId.MAINNET]: [WMIND[ChainId.MAINNET]],
+  [ChainId.TESTNET]: [WMIND[ChainId.TESTNET]],
 }
 
 // used to construct intermediary pairs for trading

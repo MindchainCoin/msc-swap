@@ -3,7 +3,7 @@ import styled, { ThemeContext } from 'styled-components'
 import { splitSignature } from '@ethersproject/bytes'
 import { Contract } from '@ethersproject/contracts'
 import { TransactionResponse } from '@ethersproject/providers'
-import { Currency, currencyEquals, ETHER, Percent, WETH } from 'mindswap-sdk'
+import { Currency, currencyEquals, ETHER, Percent, WMIND } from 'mindswap-sdk'
 import { Button, Flex, Text } from 'msc-uikit'
 import { ArrowDown, Plus } from 'react-feather'
 import { RouteComponentProps } from 'react-router'
@@ -403,8 +403,8 @@ export default function RemoveLiquidity({
   const oneCurrencyIsETH = currencyA === ETHER || currencyB === ETHER
   const oneCurrencyIsWETH = Boolean(
     chainId &&
-      ((currencyA && currencyEquals(WETH[chainId], currencyA)) ||
-        (currencyB && currencyEquals(WETH[chainId], currencyB)))
+      ((currencyA && currencyEquals(WMIND[chainId], currencyA)) ||
+        (currencyB && currencyEquals(WMIND[chainId], currencyB)))
   )
 
   const handleSelectCurrencyA = useCallback(
@@ -550,8 +550,8 @@ export default function RemoveLiquidity({
                         <RowBetween style={{ justifyContent: 'flex-end' }}>
                           {oneCurrencyIsETH ? (
                             <StyledInternalLink
-                              to={`/remove/${currencyA === ETHER ? WETH[chainId].address : currencyIdA}/${
-                                currencyB === ETHER ? WETH[chainId].address : currencyIdB
+                              to={`/remove/${currencyA === ETHER ? WMIND[chainId].address : currencyIdA}/${
+                                currencyB === ETHER ? WMIND[chainId].address : currencyIdB
                               }`}
                             >
                               {TranslateString(1188, 'Receive WMIND')}
@@ -559,8 +559,8 @@ export default function RemoveLiquidity({
                           ) : oneCurrencyIsWETH ? (
                             <StyledInternalLink
                               to={`/remove/${
-                                currencyA && currencyEquals(currencyA, WETH[chainId]) ? 'WMIND' : currencyIdA
-                              }/${currencyB && currencyEquals(currencyB, WETH[chainId]) ? 'WMIND' : currencyIdB}`}
+                                currencyA && currencyEquals(currencyA, WMIND[chainId]) ? 'WMIND' : currencyIdA
+                              }/${currencyB && currencyEquals(currencyB, WMIND[chainId]) ? 'WMIND' : currencyIdB}`}
                             >
                               {TranslateString(1190, 'Receive WMIND')}
                             </StyledInternalLink>
