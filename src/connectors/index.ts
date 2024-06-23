@@ -6,9 +6,9 @@ import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 import { BscConnector } from '@binance-chain/bsc-connector'
 import { NetworkConnector } from './NetworkConnector'
 
-const NETWORK_URL = process.env.REACT_APP_NETWORK_URL
+const NETWORK_URL = "https://seednode.mindchain.info" || "https://mind-smart-chain.rpc.thirdweb.com" || "https://rpc-msc.mindchain.info";
 
-export const NETWORK_CHAIN_ID: number = parseInt(process.env.REACT_APP_CHAIN_ID ?? '56')
+export const NETWORK_CHAIN_ID: number = parseInt(process.env.REACT_APP_CHAIN_ID ?? '9996')
 
 if (typeof NETWORK_URL === 'undefined') {
   throw new Error(`REACT_APP_NETWORK_URL must be a defined environment variable`)
