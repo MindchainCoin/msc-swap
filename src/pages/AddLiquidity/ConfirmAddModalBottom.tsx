@@ -1,7 +1,7 @@
 import { Currency, CurrencyAmount, Fraction, Percent } from 'mindswap-sdk'
 import React from 'react'
 import { Button, Text } from 'msc-uikit'
-import { TranslateString } from 'utils/translateTextHelpers'
+// import { TranslateString } from 'utils/translateTextHelpers'
 import { RowBetween, RowFixed } from '../../components/Row'
 import CurrencyLogo from '../../components/CurrencyLogo'
 import { Field } from '../../state/mint/actions'
@@ -57,7 +57,7 @@ export function ConfirmAddModalBottom({
         <Text>{noLiquidity ? '100' : poolTokenPercentage?.toSignificant(4)}%</Text>
       </RowBetween>
       <Button mt="20px" onClick={onAdd}>
-        {noLiquidity ? TranslateString(250, 'Create Pool & Supply') : TranslateString(252, 'Confirm Supply')}
+       {noLiquidity ? 'Create Pool & Supply' : 'Confirm Supply'}
       </Button>
     </>
   )
