@@ -2,11 +2,11 @@
 import { MenuEntry } from "msc-uikit"
 
 const config: MenuEntry[] = [
-  {
-    label: 'Home',
-    icon: 'HomeIcon',
-    href: 'https://mscswap.com',
-  },
+  // {
+  //   label: 'Home',
+  //   icon: 'HomeIcon',
+  //   href: 'https://mscswap.com',
+  // },
   {
     label: 'Trade',
     icon: 'TradeIcon',
