@@ -6,11 +6,16 @@ import useI18n from 'hooks/useI18n'
 
 const UnlockButton: React.FC<ButtonProps> = (props) => {
   const TranslateString = useI18n()
-  const { account, activate, deactivate } = useWeb3React()
+  const { account, activate, deactivate, chainId } = useWeb3React()
 
   const handleLogin = (connectorId: ConnectorNames) => {
     const connector = connectorsByName[connectorId]
     if (connector) {
+      const expectedChainId = 9996;
+      if (chainId !== expectedChainId) {
+        alert('Wrong chain ID. Please switch to the correct network.')
+        return
+      }
       activate(connector)
     }
   }
