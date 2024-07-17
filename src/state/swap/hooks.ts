@@ -201,7 +201,7 @@ function parseCurrencyFromURLParameter(urlParam: any): string {
   if (typeof urlParam === 'string') {
     const valid = isAddress(urlParam)
     if (valid) return valid
-    if (urlParam.toUpperCase() === 'MIND') return 'MINND'
+    if (urlParam.toUpperCase() === 'MIND') return 'MIND'
     if (valid === false) return 'MIND'
   }
   return 'MIND' ?? ''
