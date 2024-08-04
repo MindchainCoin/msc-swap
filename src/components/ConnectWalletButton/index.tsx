@@ -1,18 +1,36 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { Button, ButtonProps, useWalletModal, ConnectorNames } from 'msc-uikit'
 import { connectorsByName } from 'connectors'
 import useI18n from 'hooks/useI18n'
 
+// No need to redeclare window.ethereum
+
 const UnlockButton: React.FC<ButtonProps> = (props) => {
   const TranslateString = useI18n()
-  const { account, activate, deactivate, chainId } = useWeb3React()
+  const { account, activate, deactivate } = useWeb3React()
+  const [currentChainId, setCurrentChainId] = useState<number | null>(null)
+
+  useEffect(() => {
+    const fetchChainId = async () => {
+      if (typeof window.ethereum !== 'undefined' && typeof window.ethereum.request === 'function') {
+        try {
+          const chainId = await window.ethereum.request({ method: 'eth_chainId' })
+          setCurrentChainId(parseInt(chainId as string, 16))
+        } catch (error) {
+          console.error('Error fetching chain ID:', error)
+        }
+      }
+    }
+
+    fetchChainId()
+  }, [])
 
   const handleLogin = (connectorId: ConnectorNames) => {
     const connector = connectorsByName[connectorId]
     if (connector) {
       const expectedChainId = 9996;
-      if (chainId !== expectedChainId) {
+      if (currentChainId !== expectedChainId) {
         alert('Wrong chain ID. Please switch to the correct network.')
         return
       }
